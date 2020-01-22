@@ -1,0 +1,8 @@
+---
+- name: "{{ ansible_distribution | lower }} | {{ ansible_distribution_release }} - Using tasks in prepare-{{ ansible_distribution }}.yml"
+  include_tasks: "prepare-{{ ansible_distribution }}.yml"
+
+- name: "{{ ansible_distribution | lower }} | {{ ansible_distribution_release }} - Install azure-cli package"
+  package:
+    name: azure-cli
+    state: present
