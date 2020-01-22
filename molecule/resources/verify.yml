@@ -1,9 +1,0 @@
----
-- name: Verify
-  hosts: all
-  become: false
-  gather_facts: false
-
-  tasks:
-    - name: check bash version
-      command: bash --version

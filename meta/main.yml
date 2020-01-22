@@ -10,8 +10,14 @@ galaxy_info:
   platforms:
     - name: Debian
       versions:
-        - all
+        - buster
+        - stretch
 
-  galaxy_tags: []
+  galaxy_tags:
+    - cloud
+    - microsoft
+    - azure
 
-  dependencies: []
+  dependencies:
+    - src: redbeard28.bootstrap
+    - src: redbeard28.basetools
