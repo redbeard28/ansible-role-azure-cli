@@ -1,0 +1,20 @@
+---
+- name: "{{ ansible_distribution | lower }} | {{ ansible_distribution_release }} - Refresh Cache"
+  apt:
+    update_cache: true
+
+- name: "{{ ansible_distribution | lower }} | {{ ansible_distribution_release }} - Download Microsoft Repo GPG KEY"
+  apt_key:
+    url: "{{ microsoft_repo_key }}"
+    keyring: /etc/apt/trusted.gpg.d/microsoft.asc.gpg
+    state: present
+
+- name: "{{ ansible_distribution | lower }} | {{ ansible_distribution_release }} - Add Microsoft Repo"
+  apt_repository:
+    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ {{ ansible_distribution_release }} main"
+    state: present
+    filename: azure-cli
+
+- name: "{{ ansible_distribution | lower }} | {{ ansible_distribution_release }} - Refresh Cache after Microsoft Repo was installed"
+  apt:
+    update_cache: true
